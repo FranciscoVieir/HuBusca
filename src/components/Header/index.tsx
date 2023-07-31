@@ -1,5 +1,9 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function Header() {
-	return <View>Header</View>;
+	return (
+		<View>
+			<Text>HEADER</Text>
+		</View>
+	);
 }
