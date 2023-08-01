@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
 	Container,
 	ContainerInput,
@@ -10,7 +12,6 @@ import { UserData } from '../../@types/interfaces';
 
 import apiGithub from '../../services/api';
 import Card from '../Card';
-import { View } from 'react-native';
 
 export function Input() {
 	const [userName, setUserName] = useState('');
@@ -28,7 +29,8 @@ export function Input() {
 	const searchUsers = async () => {
 		try {
 			const response = await apiGithub.get(`/users/${userName}`);
-			setUserData({
+
+			const newUser = {
 				name: response.data.name,
 				avatar_url: response.data.avatar_url,
 				login: response.data.login,
@@ -37,7 +39,10 @@ export function Input() {
 				followers: response.data.followers,
 				public_repos: response.data.public_repos,
 				repos_url: response.data.repos_url,
-			});
+			};
+
+			setUserData(newUser);
+			saveUserDataHistory(newUser);
 		} catch (error) {
 			setUserData({
 				name: '',
@@ -49,15 +54,26 @@ export function Input() {
 				public_repos: 0,
 				repos_url: '',
 			});
+			Alert.alert('Tente novamente', 'Usuário não existe!');
 		}
 	};
 
+	const saveUserDataHistory = async (user: UserData) => {
+		try {
+			const json = JSON.stringify(user);
+			await AsyncStorage.setItem(`@user_${userData.login}`, json);
+		} catch (error) {
+			Alert.alert('Falha', 'Falha ao armazenar as informações');
+		}
+	};
+
+	// remover depois que finalizar o componente
 	useEffect(() => {
 		console.log(userData);
 	}, [userData]);
 
 	return (
-		<View>
+		<>
 			<Container>
 				<ContainerInput
 					placeholder="Digite o nome do usuário"
@@ -75,6 +91,6 @@ export function Input() {
 					<Card userData={userData} />
 				</CardContainer>
 			)}
-		</View>
+		</>
 	);
 }
