@@ -1,9 +1,9 @@
-import { Text, View } from 'react-native';
+import { Container, Title } from './styles';
 
 export default function Header() {
 	return (
-		<View>
-			<Text>HEADER</Text>
-		</View>
+		<Container>
+			<Title>HuBusca</Title>
+		</Container>
 	);
 }

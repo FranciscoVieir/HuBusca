@@ -1,9 +1,21 @@
-import { TextInput, View } from 'react-native';
+import {
+	Container,
+	ContainerInput,
+	ButtonText,
+	ContainerButton,
+} from './styles';
 
 export function Input() {
 	return (
-		<View>
-			<TextInput placeholder="Pesquise aqui" />
-		</View>
+		<Container>
+			<ContainerInput placeholder="Pesquise aqui" />
+			<ContainerButton
+				onPress={() => {
+					// Lógica
+				}}
+			>
+				<ButtonText>Pesquisar</ButtonText>
+			</ContainerButton>
+		</Container>
 	);
 }
