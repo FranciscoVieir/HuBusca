@@ -1,4 +1,4 @@
-import { TextInput } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -16,7 +16,7 @@ export const ContainerInput = styled(TextInput)`
 	background-color: white;
 `;
 
-export const ContainerButton = styled.TouchableOpacity`
+export const ContainerButton = styled(TouchableOpacity)`
 	background-color: #6912a5;
 	padding: 6px;
 	border-radius: 5px;
@@ -26,4 +26,12 @@ export const ButtonText = styled.Text`
 	color: white;
 	font-size: 16px;
 	font-weight: bold;
+`;
+
+export const CardContainer = styled.View`
+	/* flex: 1; */
+	margin-top: 50%;
+	margin-bottom: 50%;
+	justify-content: center;
+	align-items: center;
 `;
