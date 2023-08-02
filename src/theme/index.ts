@@ -16,7 +16,7 @@ export default {
 		GRAY_200: '#C4C4CC',
 		GRAY_100: '#E1E1E6',
 
-		PURPLE: '#6912A5',
+		PURPLE: '#6912a5',
 	},
 	FONT_SIZE: {
 		SM: 14,

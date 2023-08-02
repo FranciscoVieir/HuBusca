@@ -61,7 +61,7 @@ export function Input() {
 	const saveUserDataHistory = async (user: UserData) => {
 		try {
 			const json = JSON.stringify(user);
-			await AsyncStorage.setItem(`@user_${userData.login}`, json);
+			await AsyncStorage.setItem('@user_data', json);
 		} catch (error) {
 			Alert.alert('Falha', 'Falha ao armazenar as informações');
 		}
@@ -69,7 +69,7 @@ export function Input() {
 
 	// remover depois que finalizar o componente
 	useEffect(() => {
-		console.log(userData);
+		console.log(userData, 'ASSIM QUE INCIA O APP');
 	}, [userData]);
 
 	return (
