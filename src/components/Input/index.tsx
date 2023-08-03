@@ -43,6 +43,8 @@ export function Input() {
 
 			setUserData(newUser);
 			saveUserDataHistory(newUser);
+			saveUserHistory(newUser);
+			setUserName('');
 		} catch (error) {
 			setUserData({
 				name: '',
@@ -63,14 +65,36 @@ export function Input() {
 			const json = JSON.stringify(user);
 			await AsyncStorage.setItem('@user_data', json);
 		} catch (error) {
-			Alert.alert('Falha', 'Falha ao armazenar as informações');
+			// tratar depois o erro
+			Alert.alert('Erro', 'Falha ao armazenar as informações');
 		}
 	};
 
-	// remover depois que finalizar o componente
+	const saveUserHistory = async (user: UserData) => {
+		try {
+			const jsonValue = await AsyncStorage.getItem('@user_data_history');
+			let userHistory = jsonValue ? JSON.parse(jsonValue) : [];
+
+			const existingUser = userHistory.find((u: UserData) => u.id === user.id);
+
+			if (!existingUser) {
+				userHistory = [...userHistory, user];
+				const json = JSON.stringify(userHistory);
+				await AsyncStorage.setItem('@user_data_history', json);
+			}
+		} catch (error) {
+			Alert.alert('Erro', 'Falha ao armazenar o histórico de usuários');
+		}
+	};
+
 	useEffect(() => {
-		console.log(userData, 'ASSIM QUE INCIA O APP');
-	}, [userData]);
+		const fetch = async () => {
+			const jsonValue = await AsyncStorage.getItem('@user_data_history');
+			const userDatad = JSON.parse(jsonValue);
+			return userData;
+		};
+		fetch();
+	}, []);
 
 	return (
 		<>

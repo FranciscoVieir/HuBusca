@@ -17,7 +17,6 @@ const Card = ({ userData }: { userData: UserData }) => {
 
 	const handleCardPress = () => {
 		navigation.navigate('details');
-		console.log('pppp');
 	};
 
 	return (

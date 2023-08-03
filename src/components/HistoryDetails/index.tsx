@@ -1,7 +1,7 @@
+// ProfileDataList.tsx (ou o nome que você está usando para esse componente)
 import React, { useEffect, useState } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { UserData } from '../../@types/interfaces';
-import { useNavigation } from '@react-navigation/native';
 import {
 	Avatar,
 	DataContainer,
@@ -9,35 +9,34 @@ import {
 	ProfileText,
 	BackButton,
 	BackContainer,
-	HistoryButton,
-	HistoryButtonText,
 	ButtonContainer,
 } from './styles';
 import RepositoryList from '../RepositoryList';
 import axios from 'axios';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
 type RootStackParamList = {
-	History: undefined;
-	historylist: undefined;
+	Home: undefined;
+	historydetails: { userData: UserData };
 };
 
-type HomeScreenNavigationProp = StackNavigationProp<
+type ProfileDataListNavigationProp = StackNavigationProp<
 	RootStackParamList,
-	'History'
+	'historydetails'
 >;
 
-function ProfileDataList({ userData }: { userData: UserData }) {
-	const navigation = useNavigation<HomeScreenNavigationProp>();
+type ProfileDataListProps = {
+	userData: UserData;
+};
+
+export function HistoryDetails({ userData }: ProfileDataListProps) {
+	const navigation = useNavigation<ProfileDataListNavigationProp>();
 	const [reposData, setReposData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	const handleGoBack = () => {
 		navigation.goBack();
-	};
-
-	const handleViewHistory = () => {
-		navigation.navigate('historylist');
 	};
 
 	useEffect(() => {
@@ -69,9 +68,6 @@ function ProfileDataList({ userData }: { userData: UserData }) {
 				<BackContainer onPress={handleGoBack}>
 					<BackButton>Back</BackButton>
 				</BackContainer>
-				<HistoryButton onPress={handleViewHistory}>
-					<HistoryButtonText>Ver histórico</HistoryButtonText>
-				</HistoryButton>
 			</ButtonContainer>
 			<ProfileDataItemContainer>
 				<Avatar source={{ uri: userData.avatar_url }} />
@@ -88,5 +84,3 @@ function ProfileDataList({ userData }: { userData: UserData }) {
 		</View>
 	);
 }
-
-export default ProfileDataList;
