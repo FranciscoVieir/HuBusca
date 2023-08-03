@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
 	Container,
 	ContainerInput,
@@ -8,8 +9,8 @@ import {
 	ContainerButton,
 	CardContainer,
 } from './styles';
-import { UserData } from '../../@types/interfaces';
 
+import { UserData } from '../../@types/interfaces';
 import apiGithub from '../../services/api';
 import Card from '../Card';
 
@@ -65,7 +66,6 @@ export function Input() {
 			const json = JSON.stringify(user);
 			await AsyncStorage.setItem('@user_data', json);
 		} catch (error) {
-			// tratar depois o erro
 			Alert.alert('Erro', 'Falha ao armazenar as informações');
 		}
 	};
@@ -86,15 +86,6 @@ export function Input() {
 			Alert.alert('Erro', 'Falha ao armazenar o histórico de usuários');
 		}
 	};
-
-	useEffect(() => {
-		const fetch = async () => {
-			const jsonValue = await AsyncStorage.getItem('@user_data_history');
-			const userDatad = JSON.parse(jsonValue);
-			return userData;
-		};
-		fetch();
-	}, []);
 
 	return (
 		<>

@@ -29,7 +29,6 @@ export const ButtonText = styled.Text`
 `;
 
 export const CardContainer = styled.View`
-	/* flex: 1; */
 	margin-top: 50%;
 	margin-bottom: 50%;
 	justify-content: center;

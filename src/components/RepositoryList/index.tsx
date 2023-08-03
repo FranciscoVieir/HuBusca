@@ -1,4 +1,5 @@
-import { FlatList, Linking, TouchableOpacity, View } from 'react-native';
+import { FlatList, Linking, TouchableOpacity } from 'react-native';
+
 import {
 	RepoDate,
 	RepoDescription,
@@ -6,8 +7,8 @@ import {
 	RepoLanguage,
 	RepoName,
 	RepoTitle,
-	Container,
 } from './styles';
+
 import { formatDate } from '../../DateFormatter';
 
 function RepositoryList({ reposData }) {
@@ -16,7 +17,7 @@ function RepositoryList({ reposData }) {
 	};
 
 	return (
-		<Container>
+		<>
 			<RepoTitle>Repositórios:</RepoTitle>
 
 			<FlatList
@@ -40,7 +41,7 @@ function RepositoryList({ reposData }) {
 				)}
 				keyExtractor={(item) => item.id.toString()}
 			/>
-		</Container>
+		</>
 	);
 }
 

@@ -1,7 +1,11 @@
-// ProfileDataList.tsx (ou o nome que você está usando para esse componente)
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { View, ActivityIndicator } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import RepositoryList from '../RepositoryList';
 import { UserData } from '../../@types/interfaces';
+
 import {
 	Avatar,
 	DataContainer,
@@ -11,10 +15,7 @@ import {
 	BackContainer,
 	ButtonContainer,
 } from './styles';
-import RepositoryList from '../RepositoryList';
-import axios from 'axios';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/native';
+import { Loading } from '../Loading';
 
 type RootStackParamList = {
 	Home: undefined;
@@ -55,11 +56,7 @@ export function HistoryDetails({ userData }: ProfileDataListProps) {
 	}, [userData.repos_url]);
 
 	if (loading) {
-		return (
-			<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-				<ActivityIndicator size="large" color="#000" />
-			</View>
-		);
+		return <Loading />;
 	}
 
 	return (

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.View`
-	/* width: 80%; */
 	max-width: 400px;
 	margin: 0 auto;
 	padding: 20px;

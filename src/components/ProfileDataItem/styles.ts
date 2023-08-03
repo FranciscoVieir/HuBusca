@@ -5,7 +5,6 @@ export const ProfileDataItemContainer = styled.View`
 	border-radius: 8px;
 	margin: 16px;
 	padding: 16px;
-	/* flex: 1; */
 `;
 
 export const Avatar = styled.Image`

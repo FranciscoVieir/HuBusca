@@ -1,13 +1,13 @@
-// HistoryList.tsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { UserData } from '../../@types/interfaces';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
 import { Button, ButtonContainer, ButtonText, Container } from './styles';
 import { CardHistory } from '../CardHistory';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { HistoryDetails } from '../HistoryDetails';
+import { UserData } from '../../@types/interfaces';
 
 type RootStackParamList = {
 	Home: undefined;
@@ -54,7 +54,6 @@ export function HistoryList() {
 
 	const handleCardPress = (userData: UserData) => {
 		setSelectedUser(userData);
-		console.log('User selected:', userData);
 	};
 
 	return (

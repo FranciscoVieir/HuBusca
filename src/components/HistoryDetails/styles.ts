@@ -2,10 +2,10 @@ import styled from 'styled-components/native';
 
 export const ProfileDataItemContainer = styled.View`
 	background-color: #f5f5f5;
+	/* flex: 1; */
 	border-radius: 8px;
 	margin: 16px;
 	padding: 16px;
-	/* flex: 1; */
 `;
 
 export const Avatar = styled.Image`

@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
-import { UserData } from '../../@types/interfaces';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import ProfileDataList from '../ProfileDataItem';
-import { Container } from './styles';
 
 export function Details() {
-	const [userData, setUserData] = useState<UserData | null>(null);
+	const [userData, setUserData] = useState();
 
 	useEffect(() => {
 		getUserDataFromAsyncStorage();
@@ -25,12 +24,12 @@ export function Details() {
 	};
 
 	return (
-		<Container>
+		<>
 			{userData ? (
 				<ProfileDataList userData={userData} />
 			) : (
 				<ActivityIndicator size="large" color="#fff" />
 			)}
-		</Container>
+		</>
 	);
 }
