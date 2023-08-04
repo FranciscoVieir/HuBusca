@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {
 	Container,
@@ -96,7 +97,7 @@ export function Input() {
 					onChangeText={setUserName}
 				/>
 				<ContainerButton onPress={searchUsers}>
-					<ButtonText>Pesquisar</ButtonText>
+					<Icon name="search" size={20} color="white" />
 				</ContainerButton>
 			</Container>
 			{userData.name === '' ? (
