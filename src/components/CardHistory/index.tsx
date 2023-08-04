@@ -14,9 +14,9 @@ export function CardHistory({ item, onPress }: UserItemProps) {
 				<ImageContainer source={{ uri: item.avatar_url }} />
 			</TouchableOpacity>
 			<View>
-				<ProfileText>Name: {item.name}</ProfileText>
+				<ProfileText>Nome: {item.name}</ProfileText>
 				<ProfileText>Login: {item.login}</ProfileText>
-				<ProfileText>Location: {item.location}</ProfileText>
+				<ProfileText>Localização: {item.location}</ProfileText>
 			</View>
 		</ProfileBox>
 	);

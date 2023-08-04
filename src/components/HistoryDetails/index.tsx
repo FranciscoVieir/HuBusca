@@ -62,12 +62,14 @@ export function HistoryDetails({ userData }: ProfileDataListProps) {
 				</ButtonContainer>
 				<Avatar source={{ uri: userData.avatar_url }} />
 				<DataContainer>
-					<ProfileText>Name: {userData.name}</ProfileText>
+					<ProfileText>Nome: {userData.name}</ProfileText>
 					<ProfileText>Login: {userData.login}</ProfileText>
-					<ProfileText>Location: {userData.location}</ProfileText>
+					<ProfileText>Localização: {userData.location}</ProfileText>
 					<ProfileText>ID: {userData.id}</ProfileText>
-					<ProfileText>Followers: {userData.followers}</ProfileText>
-					<ProfileText>Public Repos: {userData.public_repos}</ProfileText>
+					<ProfileText>Seguidores: {userData.followers}</ProfileText>
+					<ProfileText>
+						repositório público: {userData.public_repos}
+					</ProfileText>
 				</DataContainer>
 				<RepositoryList reposData={reposData} />
 			</ProfileDataItemContainer>

@@ -25,7 +25,7 @@ const Card = ({ userData }: { userData: UserData }) => {
 			</TouchableOpacity>
 			<Name>{userData.name}</Name>
 			<Login>@{userData.login}</Login>
-			<Location>Location: {userData.location}</Location>
+			<Location>Localização: {userData.location}</Location>
 		</CardContainer>
 	);
 };

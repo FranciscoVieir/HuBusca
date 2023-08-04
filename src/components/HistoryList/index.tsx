@@ -8,7 +8,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {
 	Button,
 	ButtonContainer,
-	ButtonText,
 	Container,
 	EmptyContainer,
 	EmptyText,
@@ -73,7 +72,7 @@ export function HistoryList() {
 						<Icon name="chevron-left" size={20} color="white" />
 					</Button>
 					<Button onPress={handleClearHistory}>
-						<ButtonText>Limpar Histórico</ButtonText>
+						<Icon name="trash-o" size={21} color="white" />
 					</Button>
 				</ButtonContainer>
 
