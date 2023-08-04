@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+const apiKey = process.env.GITHUB_API_KEY || '';
+
 const apiGithub = axios.create({
 	baseURL: 'https://api.github.com',
 	headers: {
-		Authorization: `Bearer ${process.env.GITHUB_API_KEY}`,
+		Authorization: apiKey ? `Bearer ${apiKey}` : '',
 	},
 });
 
