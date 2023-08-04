@@ -2,17 +2,7 @@ import { styled } from 'styled-components/native';
 
 export const Container = styled.View`
 	flex: 1;
-	background-color: black;
-`;
-
-export const ProfileBox = styled.View`
-	flex-direction: row;
-	align-items: center;
-	background-color: #f5f5f5;
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	padding: 16px;
-	margin: 8px;
+	background-color: ${({ theme }) => theme.COLORS.GRAY_600};
 `;
 
 export const ProfileText = styled.Text`
@@ -22,7 +12,7 @@ export const ProfileText = styled.Text`
 export const ButtonContainer = styled.View`
 	flex-direction: row;
 	justify-content: space-between;
-	padding: 16px;
+	padding: 14px;
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -36,4 +26,23 @@ export const Button = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
 	color: #fff;
 	font-weight: bold;
+`;
+
+export const TitleText = styled.Text`
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	margin-top: 20px;
+	padding-bottom: 10px;
+`;
+
+export const EmptyContainer = styled.View`
+	justify-content: center;
+	align-items: center;
+`;
+
+export const EmptyText = styled.Text`
+	color: white;
+	font-size: 16px;
 `;

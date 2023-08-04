@@ -3,8 +3,8 @@ import styled from 'styled-components/native';
 export const ProfileDataItemContainer = styled.View`
 	background-color: #f5f5f5;
 	border-radius: 8px;
-	margin: 16px;
-	padding: 16px;
+	margin: 9px;
+	padding: 13px;
 `;
 
 export const Avatar = styled.Image`
@@ -29,7 +29,6 @@ export const ProfileText = styled.Text`
 
 export const BackContainer = styled.TouchableOpacity`
 	padding: 8px;
-	width: 60px;
 	background-color: #6912a5;
 	border-radius: 8px;
 	align-items: center;
@@ -58,4 +57,6 @@ export const HistoryButtonText = styled.Text`
 export const ButtonContainer = styled.View`
 	flex-direction: row;
 	justify-content: space-between;
+	margin-top: 10px;
+	margin-bottom: 20px;
 `;

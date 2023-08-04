@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { View, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import RepositoryList from '../RepositoryList';
 import { UserData } from '../../@types/interfaces';
 
@@ -11,20 +12,19 @@ import {
 	DataContainer,
 	ProfileDataItemContainer,
 	ProfileText,
-	BackButton,
 	BackContainer,
 	ButtonContainer,
+	Container,
 } from './styles';
-import { Loading } from '../Loading';
 
 type RootStackParamList = {
 	Home: undefined;
-	historydetails: { userData: UserData };
+	home: { userData: UserData };
 };
 
 type ProfileDataListNavigationProp = StackNavigationProp<
 	RootStackParamList,
-	'historydetails'
+	'home'
 >;
 
 type ProfileDataListProps = {
@@ -34,10 +34,9 @@ type ProfileDataListProps = {
 export function HistoryDetails({ userData }: ProfileDataListProps) {
 	const navigation = useNavigation<ProfileDataListNavigationProp>();
 	const [reposData, setReposData] = useState([]);
-	const [loading, setLoading] = useState(true);
 
 	const handleGoBack = () => {
-		navigation.goBack();
+		navigation.navigate('home');
 	};
 
 	useEffect(() => {
@@ -45,28 +44,22 @@ export function HistoryDetails({ userData }: ProfileDataListProps) {
 			try {
 				const response = await axios.get(userData.repos_url);
 				setReposData(response.data);
-				setLoading(false);
 			} catch (error) {
 				console.error('Erro ao obter dados dos repositórios:', error);
-				setLoading(false);
 			}
 		};
 
 		fetchReposData();
 	}, [userData.repos_url]);
 
-	if (loading) {
-		return <Loading />;
-	}
-
 	return (
-		<View>
-			<ButtonContainer>
-				<BackContainer onPress={handleGoBack}>
-					<BackButton>Back</BackButton>
-				</BackContainer>
-			</ButtonContainer>
+		<Container>
 			<ProfileDataItemContainer>
+				<ButtonContainer>
+					<BackContainer onPress={handleGoBack}>
+						<Icon name="home" size={20} color="white" />
+					</BackContainer>
+				</ButtonContainer>
 				<Avatar source={{ uri: userData.avatar_url }} />
 				<DataContainer>
 					<ProfileText>Name: {userData.name}</ProfileText>
@@ -78,6 +71,6 @@ export function HistoryDetails({ userData }: ProfileDataListProps) {
 				</DataContainer>
 				<RepositoryList reposData={reposData} />
 			</ProfileDataItemContainer>
-		</View>
+		</Container>
 	);
 }

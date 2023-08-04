@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {
 	Avatar,
 	DataContainer,
 	ProfileDataItemContainer,
 	ProfileText,
-	BackButton,
 	BackContainer,
 	HistoryButton,
 	HistoryButtonText,
@@ -64,26 +64,30 @@ function ProfileDataList({ userData }: { userData: UserData }) {
 
 	return (
 		<View>
-			<ButtonContainer>
-				<BackContainer onPress={handleGoBack}>
-					<BackButton>Back</BackButton>
-				</BackContainer>
-				<HistoryButton onPress={handleViewHistory}>
-					<HistoryButtonText>Ver histórico</HistoryButtonText>
-				</HistoryButton>
-			</ButtonContainer>
-			<ProfileDataItemContainer>
-				<Avatar source={{ uri: userData.avatar_url }} />
-				<DataContainer>
-					<ProfileText>Name: {userData.name}</ProfileText>
-					<ProfileText>Login: {userData.login}</ProfileText>
-					<ProfileText>Location: {userData.location}</ProfileText>
-					<ProfileText>ID: {userData.id}</ProfileText>
-					<ProfileText>Followers: {userData.followers}</ProfileText>
-					<ProfileText>Public Repos: {userData.public_repos}</ProfileText>
-				</DataContainer>
-				<RepositoryList reposData={reposData} />
-			</ProfileDataItemContainer>
+			<View>
+				<ButtonContainer>
+					<BackContainer onPress={handleGoBack}>
+						<Icon name="chevron-left" size={20} color="white" />
+					</BackContainer>
+					<HistoryButton onPress={handleViewHistory}>
+						<HistoryButtonText>Ver histórico</HistoryButtonText>
+					</HistoryButton>
+				</ButtonContainer>
+				<ProfileDataItemContainer>
+					<Avatar source={{ uri: userData.avatar_url }} />
+					<DataContainer>
+						<ProfileText>Nome: {userData.name}</ProfileText>
+						<ProfileText>Login: {userData.login}</ProfileText>
+						<ProfileText>Localização: {userData.location}</ProfileText>
+						<ProfileText>ID: {userData.id}</ProfileText>
+						<ProfileText>Seguidores: {userData.followers}</ProfileText>
+						<ProfileText>
+							Repositório público: {userData.public_repos}
+						</ProfileText>
+					</DataContainer>
+					<RepositoryList reposData={reposData} />
+				</ProfileDataItemContainer>
+			</View>
 		</View>
 	);
 }

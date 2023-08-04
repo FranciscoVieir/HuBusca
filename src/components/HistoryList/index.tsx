@@ -3,8 +3,17 @@ import { FlatList } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { Button, ButtonContainer, ButtonText, Container } from './styles';
+import {
+	Button,
+	ButtonContainer,
+	ButtonText,
+	Container,
+	EmptyContainer,
+	EmptyText,
+	TitleText,
+} from './styles';
 import { CardHistory } from '../CardHistory';
 import { HistoryDetails } from '../HistoryDetails';
 import { UserData } from '../../@types/interfaces';
@@ -57,24 +66,34 @@ export function HistoryList() {
 	};
 
 	return (
-		<Container>
-			<ButtonContainer>
-				<Button onPress={() => navigation.goBack()}>
-					<ButtonText>Voltar</ButtonText>
-				</Button>
-				<Button onPress={handleClearHistory}>
-					<ButtonText>Limpar Histórico</ButtonText>
-				</Button>
-			</ButtonContainer>
-			<FlatList
-				data={userHistory}
-				keyExtractor={(item) => item.id.toString()}
-				renderItem={({ item }) => (
-					<CardHistory item={item} onPress={handleCardPress} />
-				)}
-				contentContainerStyle={{ alignItems: 'stretch', paddingVertical: 16 }}
-			/>
+		<>
+			<Container>
+				<ButtonContainer>
+					<Button onPress={() => navigation.goBack()}>
+						<Icon name="chevron-left" size={20} color="white" />
+					</Button>
+					<Button onPress={handleClearHistory}>
+						<ButtonText>Limpar Histórico</ButtonText>
+					</Button>
+				</ButtonContainer>
+
+				<TitleText>Histórico</TitleText>
+
+				<FlatList
+					data={userHistory}
+					keyExtractor={(item) => item.id.toString()}
+					renderItem={({ item }) => (
+						<CardHistory item={item} onPress={handleCardPress} />
+					)}
+					contentContainerStyle={{ alignItems: 'stretch', paddingVertical: 16 }}
+					ListEmptyComponent={() => (
+						<EmptyContainer>
+							<EmptyText>Lista está vazia</EmptyText>
+						</EmptyContainer>
+					)}
+				/>
+			</Container>
 			{selectedUser && <HistoryDetails userData={selectedUser} />}
-		</Container>
+		</>
 	);
 }

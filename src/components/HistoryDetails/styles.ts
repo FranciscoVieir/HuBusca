@@ -1,8 +1,13 @@
 import styled from 'styled-components/native';
 
+export const Container = styled.View`
+	height: 100%;
+	width: 100%;
+`;
+
 export const ProfileDataItemContainer = styled.View`
+	flex: 1;
 	background-color: #f5f5f5;
-	/* flex: 1; */
 	border-radius: 8px;
 	margin: 16px;
 	padding: 16px;
@@ -30,7 +35,7 @@ export const ProfileText = styled.Text`
 
 export const BackContainer = styled.TouchableOpacity`
 	padding: 8px;
-	width: 60px;
+	width: 50px;
 	background-color: #6912a5;
 	border-radius: 8px;
 	align-items: center;
