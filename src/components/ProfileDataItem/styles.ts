@@ -1,3 +1,4 @@
+import { SafeAreaView } from 'react-native';
 import styled from 'styled-components/native';
 
 export const ProfileDataItemContainer = styled.View`
@@ -57,6 +58,6 @@ export const HistoryButtonText = styled.Text`
 export const ButtonContainer = styled.View`
 	flex-direction: row;
 	justify-content: space-between;
-	margin-top: 10px;
+	margin-top: 35px;
 	margin-bottom: 20px;
 `;

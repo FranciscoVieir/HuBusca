@@ -1,10 +1,10 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Home } from '../screens/Home';
 import { Profile } from '../screens/Profile';
 import { History } from '../screens/History';
 import { HistoryList } from '../components/HistoryList';
 
-const { Navigator, Screen } = createNativeStackNavigator();
+const { Navigator, Screen } = createStackNavigator();
 
 export function AppRoutes() {
 	return (
