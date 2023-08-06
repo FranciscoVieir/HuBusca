@@ -11,23 +11,28 @@
 <details>
   <summary>Clique para ver as capturas de tela</summary>
   
-  ### Captura de Tela 1:
+   ### Captura de Tela 1:
+  <img src="./assets/screenshots/Splash.png" alt="Captura de Tela 1" width="300">
+  <br>
+
+### Captura de Tela 2:
+
   <img src="./assets/screenshots/Screenshot-1.png" alt="Captura de Tela 1" width="300">
   <br>
   
-  ### Captura de Tela 2:
+  ### Captura de Tela 3:
   <img src="./assets/screenshots/Screenshot-2.png" alt="Captura de Tela 2" width="300">
   <br>
   
-  ### Captura de Tela 3:
+  ### Captura de Tela 4:
   <img src="./assets/screenshots/Screenshot-3.png" alt="Captura de Tela 3" width="300">
   <br>
   
-  ### Captura de Tela 4:
+  ### Captura de Tela 5:
   <img src="./assets/screenshots/Screenshot-4.png" alt="Captura de Tela 4" width="300">
   <br>
   
-  ### Captura de Tela 5:
+  ### Captura de Tela 6:
   <img src="./assets/screenshots/Screenshot-5.png" alt="Captura de Tela 5" width="300">
   <br>
 </details>
